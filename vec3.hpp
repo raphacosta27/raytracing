@@ -15,6 +15,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <iostream>
+#include <x86intrin.h>
 
 class vec3  {
 
@@ -67,6 +68,11 @@ inline void vec3::make_unit_vector() {
 }
 
 inline vec3 operator+(const vec3 &v1, const vec3 &v2) {
+    // __m128 V1 = _mm_set_ps(v1.e[0], v1.e[1], v1.e[2], 0);
+    // __m128 V2 = _mm_set_ps(v2.e[0], v2.e[1], v2.e[2], 0);
+    // __m128 res = _mm_add_ps(V1, V2);
+    // float* result = (float*)&res;
+    // return vec3(result[3],result[2], result[1]);
     return vec3(v1.e[0] + v2.e[0], v1.e[1] + v2.e[1], v1.e[2] + v2.e[2]);
 }
 
