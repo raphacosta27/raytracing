@@ -4,6 +4,10 @@
 #include "ray.hpp"
 #include "sphere.hpp"
 #include "hitable_list.hpp"
+#include <x86intrin.h> //Extensoes SSE
+#include <bits/stdc++.h> //Bibliotecas STD
+using namespace std;
+using namespace std::chrono;
 
 vec3 color_ray(const ray& r, hitable *world) {
   const vec3 white = vec3(1.0, 1.0, 1.0);
@@ -21,8 +25,9 @@ vec3 color_ray(const ray& r, hitable *world) {
 }
 
 int main() {
-  int nx = 200;
-  int ny = 100;
+  auto now = high_resolution_clock::now();
+  int nx = 2400;
+  int ny = 1600;
   std::cout << "P3\n" << nx << " " << ny << "\n255\n";
   vec3 lower_left_corner(-2.0, -1.0, -1.0);
   vec3 horizontal(4.0, 0.0, 0.0);
@@ -50,5 +55,7 @@ int main() {
       std::cout << ir << " " << ig << " " << ib << "\n";
     }
   }
+  auto end_time = duration_cast<duration<double>>(high_resolution_clock::now() - now).count();
+  std::cout << "Time: " << end_time << "\n";
   return 0;
 }
