@@ -35,6 +35,7 @@ __global__ void generate(int *A, int nx, int ny,
   A[(i*ny + j)*3] = ir;
   A[(i*ny + j)*3 + 1] = ig;
   A[(i*ny + j)*3 + 2] = ib;
+  // Kernel baseado no kernel mais basico feito por Raphael, Bruna e Elisa (tutorial.cu)
 }
 
 __global__ void create_world(hitable **d_list, hitable **d_world) {
